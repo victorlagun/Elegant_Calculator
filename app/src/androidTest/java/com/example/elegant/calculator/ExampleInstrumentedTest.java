@@ -1,4 +1,4 @@
-package com.example.new_sample;
+package com.example.elegant.calculator;
 
 import android.content.Context;
 
