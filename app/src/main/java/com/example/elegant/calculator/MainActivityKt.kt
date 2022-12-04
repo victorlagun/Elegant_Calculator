@@ -199,14 +199,14 @@ class MainActivityKt : AppCompatActivity() {
 
     private fun operation() {
         if (!val1.isNaN()) {
-            if (binding.output.text.toString()[0] == '-') {
+            if (binding.output.text.isNotEmpty() && binding.output.text.toString()[0] == '-') {
                 val1 *= (-1)
             }
             val2 = binding.input.text.toString().toDouble()
             when(ACTION) {
                 ADDITION -> val1 += val2
                 SUBTRACTION -> val1 -= val2
-                MULTIPLICATION -> val1 += val2
+                MULTIPLICATION -> val1 *= val2
                 DIVISION -> val1 /= val2
                 EXTRA -> val1 *= (-1)
                 MODULUS -> val1 %= val2
