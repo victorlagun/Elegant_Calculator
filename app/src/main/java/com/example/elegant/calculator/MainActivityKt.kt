@@ -82,6 +82,20 @@ class MainActivityKt : AppCompatActivity() {
                 exceedLength()
                 input.text = input.text.toString() + "."
             }
+            buttonPara1.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = MODULUS
+                    operation()
+                    if (!ifReallyDecimal()) {
+                        output.text = "$val1%"
+                    } else {
+                        output.text = val1.toInt().toString() + "%"
+                    }
+                    input.text = ""
+                } else {
+                    output.text = "Error"
+                }
+            }
         }
     }
 
