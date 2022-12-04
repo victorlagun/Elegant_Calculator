@@ -13,6 +13,9 @@ private const val DIVISION = '/'
 private const val EQU = '='
 private const val EXTRA = '@'
 private const val MODULUS = '%'
+private var ACTION = ' '
+private var val1 = Double.NaN
+private var val2 = 0.0
 
 class MainActivityKt : AppCompatActivity() {
 
@@ -74,6 +77,61 @@ class MainActivityKt : AppCompatActivity() {
                 ifErrorOnOutput()
                 exceedLength()
                 input.text = input.text.toString() + "0"
+            }
+            buttonDot.setOnClickListener {
+                exceedLength()
+                input.text = input.text.toString() + "."
+            }
+        }
+    }
+
+    private fun operation() {
+        if (!val1.isNaN()) {
+            if (binding.output.text.toString()[0] == '-') {
+                val1 *= (-1)
+            }
+            val2 = binding.input.text.toString().toDouble()
+            when(ACTION) {
+                ADDITION -> val1 += val2
+                SUBTRACTION -> val1 -= val2
+                MULTIPLICATION -> val1 += val2
+                DIVISION -> val1 /= val2
+                EXTRA -> val1 *= (-1)
+                MODULUS -> val1 %= val2
+                EQU -> {}
+            }
+        } else {
+            val1 = binding.input.text.toString().toDouble()
+        }
+    }
+
+    private fun noOperation() {
+        var inputExpression = binding.output.text.toString()
+        if (inputExpression.isNotEmpty() && inputExpression != "Error") {
+            if (inputExpression.contains("-")) {
+                inputExpression = inputExpression.replace("-", "")
+                binding.output.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("+")) {
+                inputExpression = inputExpression.replace("+", "")
+                binding.output.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("/")) {
+                inputExpression = inputExpression.replace("/", "")
+                binding.output.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("%")) {
+                inputExpression = inputExpression.replace("%", "")
+                binding.output.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("×")) {
+                inputExpression = inputExpression.replace("×", "")
+                binding.output.text = ""
+                val1 = inputExpression.toDouble()
             }
         }
     }
