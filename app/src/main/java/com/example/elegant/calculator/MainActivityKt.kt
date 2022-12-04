@@ -138,6 +138,62 @@ class MainActivityKt : AppCompatActivity() {
                     output.text = "Error"
                 }
             }
+            buttonDivide.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = DIVISION
+                    operation()
+                    if (!ifReallyDecimal()) {
+                        output.text = "$val1/"
+                    } else {
+                        output.text = val1.toInt().toString() + "/"
+                    }
+                    input.text = ""
+                } else {
+                    output.text = "Error"
+                }
+            }
+            buttonPara2.setOnClickListener {
+                if (output.text.toString().isNotEmpty() || input.text.toString().isNotEmpty()) {
+                    val1 = input.text.toString().toDouble()
+                    ACTION = EXTRA
+                    output.text = "-" + input.text.toString()
+                    input.text = ""
+                } else {
+                    output.text = "Error"
+                }
+            }
+            buttonEqual.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    operation()
+                    ACTION = EQU
+                    if (!ifReallyDecimal()) {
+                        output.text = val1.toString()
+                    } else {
+                        output.text = val1.toInt().toString()
+                    }
+                    input.text = ""
+                } else {
+                    output.text = "Error"
+                }
+            }
+            buttonClear.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    val name: CharSequence = input.text.toString()
+                    input.text = name.subSequence(0, name.length - 1)
+                } else {
+                    val1 = Double.NaN
+                    val2 = Double.NaN
+                    input.text = ""
+                    output.text = ""
+                }
+            }
+            buttonClear.setOnLongClickListener {
+                val1 = Double.NaN
+                val2 = Double.NaN
+                input.text = ""
+                output.text = ""
+                true
+            }
         }
     }
 
