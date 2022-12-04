@@ -105,6 +105,10 @@ class MainActivityKt : AppCompatActivity() {
         }
     }
 
+    private fun ifReallyDecimal(): Boolean {
+        return val1 == val1.toInt().toDouble()
+    }
+
     private fun noOperation() {
         var inputExpression = binding.output.text.toString()
         if (inputExpression.isNotEmpty() && inputExpression != "Error") {
