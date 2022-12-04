@@ -124,6 +124,20 @@ class MainActivityKt : AppCompatActivity() {
                     output.text = "Error"
                 }
             }
+            buttonMulti.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = MULTIPLICATION
+                    operation()
+                    if (!ifReallyDecimal()) {
+                        output.text = "$val1×"
+                    } else {
+                        output.text = val1.toInt().toString() + "×"
+                    }
+                    input.text = ""
+                } else {
+                    output.text = "Error"
+                }
+            }
         }
     }
 
