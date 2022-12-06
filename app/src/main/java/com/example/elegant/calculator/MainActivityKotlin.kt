@@ -171,6 +171,21 @@ class MainActivityKotlin: AppCompatActivity() {
                 t2.text = "Error"
             }
         }
+
+        b_equal.setOnClickListener {
+            if (t1.text.isNotEmpty()) {
+                operation()
+                ACTION = EQU
+                if (!ifReallyDecimal()) {
+                    t2.text = val1.toString()
+                } else {
+                    t2.text = val1.toInt().toString()
+                }
+                t1.text = null
+            } else {
+                t2.text = "Error"
+            }
+        }
     }
 
     // Remove error message that is already written there.
