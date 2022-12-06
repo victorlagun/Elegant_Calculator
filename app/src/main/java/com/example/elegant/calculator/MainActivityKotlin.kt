@@ -106,6 +106,11 @@ class MainActivityKotlin: AppCompatActivity() {
             exceedLength()
             t1.text = "${t1.text}0"
         }
+
+        b_dot.setOnClickListener {
+            exceedLength()
+            t1.text = "${t1.text}."
+        }
     }
 
     // Remove error message that is already written there.
