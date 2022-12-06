@@ -207,6 +207,32 @@ class MainActivityKotlin: AppCompatActivity() {
             t2.text = ""
             true
         }
+
+        b_para1.setOnClickListener {
+            if (t1.text.isNotEmpty()) {
+                ACTION = MODULUS
+                operation()
+                if (!ifReallyDecimal()) {
+                    t2.text = "$val1%"
+                } else {
+                    t2.text = val1.toInt().toString() + "%"
+                }
+                t1.text = null
+            } else {
+                t2.text = "Error"
+            }
+        }
+
+        b_para2.setOnClickListener {
+            if (!t2.text.toString().isEmpty() || !t1.text.toString().isEmpty()) {
+                val1 = t1.text.toString().toDouble()
+                ACTION = EXTRA
+                t2.text = "-" + t1.text.toString()
+                t1.text = ""
+            } else {
+                t2.text = "Error"
+            }
+        }
     }
 
     // Remove error message that is already written there.
