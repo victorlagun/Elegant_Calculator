@@ -1,5 +1,6 @@
 package com.example.elegant.calculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.TypedValue
@@ -41,9 +42,70 @@ class MainActivityKotlin: AppCompatActivity() {
     private var ACTION = 0.toChar()
     private var val1 = Double.NaN
     private var val2 = 0.0
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.activity_main)
+
+        b1.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}1"
+        }
+
+        b2.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}2"
+        }
+
+        b3.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}3"
+        }
+
+        b4.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}4"
+        }
+
+        b5.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}5"
+        }
+
+        b6.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}6"
+        }
+
+        b7.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}7"
+        }
+
+        b8.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}8"
+        }
+
+        b9.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}9"
+        }
+
+        b0.setOnClickListener {
+            ifErrorOnOutput()
+            exceedLength()
+            t1.text = "${t1.text}0"
+        }
     }
 
     // Remove error message that is already written there.
