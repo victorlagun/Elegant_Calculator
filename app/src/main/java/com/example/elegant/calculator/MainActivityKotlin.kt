@@ -156,6 +156,21 @@ class MainActivityKotlin: AppCompatActivity() {
                 t2.text = "Error"
             }
         }
+
+        b_divide.setOnClickListener {
+            if (t1.text.isNotEmpty()) {
+                ACTION = DIVISION
+                operation()
+                if (ifReallyDecimal()) {
+                    t2.text = val1.toInt().toString() + "/"
+                } else {
+                    t2.text = "$val1/"
+                }
+                t1.text = null
+            } else {
+                t2.text = "Error"
+            }
+        }
     }
 
     // Remove error message that is already written there.
