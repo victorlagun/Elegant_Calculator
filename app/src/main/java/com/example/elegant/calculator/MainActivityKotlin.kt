@@ -2,6 +2,7 @@ package com.example.elegant.calculator
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -86,5 +87,12 @@ class MainActivityKotlin: AppCompatActivity() {
     // Whether value if a double or not
     private fun ifReallyDecimal(): Boolean {
         return val1 == val1.toInt().toDouble()
+    }
+
+    // Make text small if too many digits.
+    private fun exceedLength() {
+        if (t1.text.toString().length > 10) {
+            t1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        }
     }
 }
