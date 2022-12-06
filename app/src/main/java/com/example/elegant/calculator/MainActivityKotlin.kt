@@ -95,4 +95,24 @@ class MainActivityKotlin: AppCompatActivity() {
             t1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         }
     }
+
+    private fun operation() {
+        if (!java.lang.Double.isNaN(val1)) {
+            if (t2.text.toString()[0] == '-') {
+                val1 = -1 * val1
+            }
+            val2 = t1.text.toString().toDouble()
+            when (ACTION) {
+                ADDITION -> val1 += val2
+                SUBTRACTION -> val1 -= val2
+                MULTIPLICATION -> val1 *= val2
+                DIVISION -> val1 /= val2
+                EXTRA -> val1 *= -1
+                MODULUS -> val1 %= val2
+                EQU -> {}
+            }
+        } else {
+            val1 = t1.text.toString().toDouble()
+        }
+    }
 }
