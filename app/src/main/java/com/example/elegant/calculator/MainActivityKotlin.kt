@@ -111,6 +111,21 @@ class MainActivityKotlin: AppCompatActivity() {
             exceedLength()
             t1.text = "${t1.text}."
         }
+
+        b_add.setOnClickListener {
+            if (t1.text.isNotEmpty()) {
+                ACTION = ADDITION
+                operation()
+                if (!ifReallyDecimal()) {
+                    t2.text = "$val1+"
+                } else {
+                    t2.text = val1.toInt().toString() + "+"
+                }
+                t1.text = null
+            } else {
+                t2.text = "Error"
+            }
+        }
     }
 
     // Remove error message that is already written there.
