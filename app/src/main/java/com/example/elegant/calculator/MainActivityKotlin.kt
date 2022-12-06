@@ -186,6 +186,27 @@ class MainActivityKotlin: AppCompatActivity() {
                 t2.text = "Error"
             }
         }
+
+        b_clear.setOnClickListener {
+            if (t1.text.isNotEmpty()) {
+                val name: CharSequence = t1.text.toString()
+                t1.text = name.subSequence(0, name.length - 1)
+            } else {
+                val1 = Double.NaN
+                val2 = Double.NaN
+                t1.text = ""
+                t2.text = ""
+            }
+        }
+
+        // Empty text views on long click.
+        b_clear.setOnLongClickListener {
+            val1 = Double.NaN
+            val2 = Double.NaN
+            t1.text = ""
+            t2.text = ""
+            true
+        }
     }
 
     // Remove error message that is already written there.
