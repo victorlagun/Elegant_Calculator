@@ -82,4 +82,9 @@ class MainActivityKotlin: AppCompatActivity() {
             }
         }
     }
+
+    // Whether value if a double or not
+    private fun ifReallyDecimal(): Boolean {
+        return val1 == val1.toInt().toDouble()
+    }
 }
