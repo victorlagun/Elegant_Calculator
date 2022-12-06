@@ -51,4 +51,35 @@ class MainActivityKotlin: AppCompatActivity() {
             t2.text = ""
         }
     }
+
+    private fun noOperation() {
+        var inputExpression = t2.text.toString()
+        if (!inputExpression.isEmpty() && inputExpression != "Error") {
+            if (inputExpression.contains("-")) {
+                inputExpression = inputExpression.replace("-", "")
+                t2.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("+")) {
+                inputExpression = inputExpression.replace("+", "")
+                t2.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("/")) {
+                inputExpression = inputExpression.replace("/", "")
+                t2.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("%")) {
+                inputExpression = inputExpression.replace("%", "")
+                t2.text = ""
+                val1 = inputExpression.toDouble()
+            }
+            if (inputExpression.contains("×")) {
+                inputExpression = inputExpression.replace("×", "")
+                t2.text = ""
+                val1 = inputExpression.toDouble()
+            }
+        }
+    }
 }
