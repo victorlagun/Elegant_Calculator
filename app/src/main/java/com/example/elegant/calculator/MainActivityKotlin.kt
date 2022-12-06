@@ -44,4 +44,11 @@ class MainActivityKotlin: AppCompatActivity() {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.activity_main)
     }
+
+    // Remove error message that is already written there.
+    private fun ifErrorOnOutput() {
+        if (t2.text.toString() == "Error") {
+            t2.text = ""
+        }
+    }
 }
