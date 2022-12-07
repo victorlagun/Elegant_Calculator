@@ -29,14 +29,14 @@ class MainActivity : AppCompatActivity() {
     private var bPara2: Button = findViewById(R.id.button_para2)
     private var t1: TextView = findViewById(R.id.input)
     private var t2: TextView = findViewById(R.id.output)
-    private val ADDITION = '+'
-    private val SUBTRACTION = '-'
-    private val MULTIPLICATION = '*'
-    private val DIVISION = '/'
-    private val EQU = '='
-    private val EXTRA = '@'
-    private val MODULUS = '%'
-    private var ACTION = 0.toChar()
+    private val addition = '+'
+    private val subtraction = '-'
+    private val multiplication = '*'
+    private val division = '/'
+    private val equ = '='
+    private val extra = '@'
+    private val modulus = '%'
+    private var action = 0.toChar()
     private var val1 = Double.NaN
     private var val2 = 0.0
 
@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
         bPara1.setOnClickListener {
             if (t1.text.isNotEmpty()) {
-                ACTION = MODULUS
+                action = modulus
                 operation()
                 if (!ifReallyDecimal()) {
                     t2.text = "$val1%"
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
         bAdd.setOnClickListener {
             if (t1.text.isNotEmpty()) {
-                ACTION = ADDITION
+                action = addition
                 operation()
                 if (!ifReallyDecimal()) {
                     t2.text = "$val1+"
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
 
         bSub.setOnClickListener {
             if (t1.text.isNotEmpty()) {
-                ACTION = SUBTRACTION
+                action = subtraction
                 operation()
                 if (t1.text.isNotEmpty()) if (!ifReallyDecimal()) {
                     t2.text = "$val1-"
@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity() {
 
         bMulti.setOnClickListener {
             if (t1.text.isNotEmpty()) {
-                ACTION = MULTIPLICATION
+                action = multiplication
                 operation()
                 if (!ifReallyDecimal()) {
                     t2.text = "$val1×"
@@ -172,7 +172,7 @@ class MainActivity : AppCompatActivity() {
 
         bDivide.setOnClickListener {
             if (t1.text.isNotEmpty()) {
-                ACTION = DIVISION
+                action = division
                 operation()
                 if (ifReallyDecimal()) {
                     t2.text = val1.toInt().toString() + "/"
@@ -186,9 +186,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         bPara2.setOnClickListener {
-            if (!t2.text.toString().isEmpty() || !t1!!.text.toString().isEmpty()) {
+            if (t2.text.toString().isNotEmpty() || t1.text.toString().isNotEmpty()) {
                 val1 = t1.text.toString().toDouble()
-                ACTION = EXTRA
+                action = extra
                 t2.text = "-" + t1.text.toString()
                 t1.text = ""
             } else {
@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity() {
         bEqual.setOnClickListener {
             if (t1.text.isNotEmpty()) {
                 operation()
-                ACTION = EQU
+                action = equ
                 if (!ifReallyDecimal()) {
                     t2.text = val1.toString()
                 } else {
@@ -239,14 +239,14 @@ class MainActivity : AppCompatActivity() {
                 val1 *= -1
             }
             val2 = t1.text.toString().toDouble()
-            when (ACTION) {
-                ADDITION -> val1 += val2
-                SUBTRACTION -> val1 -= val2
-                MULTIPLICATION -> val1 *= val2
-                DIVISION -> val1 /= val2
-                EXTRA -> val1 *= -1
-                MODULUS -> val1 %= val2
-                EQU -> {}
+            when (action) {
+                addition -> val1 += val2
+                subtraction -> val1 -= val2
+                multiplication -> val1 *= val2
+                division -> val1 /= val2
+                extra -> val1 *= -1
+                modulus -> val1 %= val2
+                equ -> {}
             }
         } else {
             val1 = t1.text.toString().toDouble()
