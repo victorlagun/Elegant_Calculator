@@ -233,7 +233,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    !private fun operation() {
+    private fun operation() {
         if (!java.lang.Double.isNaN(val1)) {
             if (t2.text.toString()[0] == '-') {
                 val1 *= -1
