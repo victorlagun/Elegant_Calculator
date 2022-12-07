@@ -254,7 +254,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Remove error message that is already written there.
-    !private fun ifErrorOnOutput() {
+    private fun ifErrorOnOutput() {
         if (t2.text.toString() == "Error") {
             t2.text = ""
         }
