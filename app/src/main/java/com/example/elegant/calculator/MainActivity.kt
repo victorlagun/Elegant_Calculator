@@ -297,7 +297,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Make text small if too many digits.
-    !private fun exceedLength() {
+    private fun exceedLength() {
         if (t1.text.toString().length > 10) {
             t1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         }
