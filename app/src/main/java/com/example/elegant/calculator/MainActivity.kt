@@ -261,7 +261,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Whether value if a double or not
-    !private fun ifReallyDecimal(): Boolean {
+    private fun ifReallyDecimal(): Boolean {
         return val1 == val1.toInt().toDouble()
     }
 
