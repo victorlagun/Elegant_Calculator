@@ -265,7 +265,7 @@ class MainActivity : AppCompatActivity() {
         return val1 == val1.toInt().toDouble()
     }
 
-    !private fun noOperation() {
+    private fun noOperation() {
         var inputExpression = t2.text.toString()
         if (inputExpression.isNotEmpty() && inputExpression != "Error") {
             if (inputExpression.contains("-")) {
