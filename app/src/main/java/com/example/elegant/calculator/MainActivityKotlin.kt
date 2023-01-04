@@ -1,6 +1,7 @@
 package com.example.elegant.calculator
 
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import com.example.elegant.calculator.databinding.ActivityMainBinding
 
@@ -67,6 +68,13 @@ class MainActivityKotlin : AppCompatActivity() {
                     val1 = inputExpression.toDouble()
                 }
             }
+        }
+    }
+
+    // Make text small if too many digits.
+    private fun exceedLength() {
+        if (binding.input.text.toString().length > 10) {
+            binding.input.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
         }
     }
 }
