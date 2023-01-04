@@ -16,7 +16,7 @@ const val ACTION = 0.toChar()
 class MainActivityKotlin : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private val val1 = Double.NaN
+    private var val1 = Double.NaN
     private val val2 = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,5 +35,38 @@ class MainActivityKotlin : AppCompatActivity() {
     // Whether value if a double or not
     private fun ifReallyDecimal(): Boolean {
         return val1 == val1.toInt().toDouble()
+    }
+
+    private fun noOperation() {
+        var inputExpression: String = binding.output.text.toString()
+        with(binding) {
+            if (inputExpression.isNotEmpty() && inputExpression != "Error") {
+                if (inputExpression.contains("-")) {
+                    inputExpression = inputExpression.replace("-", "")
+                    output.text = ""
+                    val1 = inputExpression.toDouble()
+                }
+                if (inputExpression.contains("+")) {
+                    inputExpression = inputExpression.replace("+", "")
+                    output.text = ""
+                    val1 = inputExpression.toDouble()
+                }
+                if (inputExpression.contains("/")) {
+                    inputExpression = inputExpression.replace("/", "")
+                    output.text = ""
+                    val1 = inputExpression.toDouble()
+                }
+                if (inputExpression.contains("%")) {
+                    inputExpression = inputExpression.replace("%", "")
+                    output.text = ""
+                    val1 = inputExpression.toDouble()
+                }
+                if (inputExpression.contains("×")) {
+                    inputExpression = inputExpression.replace("×", "")
+                    output.text = ""
+                    val1 = inputExpression.toDouble()
+                }
+            }
+        }
     }
 }
