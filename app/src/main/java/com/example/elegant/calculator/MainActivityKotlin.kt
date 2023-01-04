@@ -14,4 +14,11 @@ class MainActivityKotlin : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
     }
+
+    // Remove error message that is already written there.
+    private fun ifErrorOnOutput() {
+        if ("${binding.output.text}" == "Error") {
+            binding.output.text = ""
+        }
+    }
 }
