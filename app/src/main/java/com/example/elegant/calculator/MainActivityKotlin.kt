@@ -18,7 +18,7 @@ class MainActivityKotlin : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var val1 = Double.NaN
-    private val val2 = 0.0
+    private var val2 = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +36,26 @@ class MainActivityKotlin : AppCompatActivity() {
     // Whether value if a double or not
     private fun ifReallyDecimal(): Boolean {
         return val1 == val1.toInt().toDouble()
+    }
+
+    private fun operation() {
+        if (!java.lang.Double.isNaN(val1)) {
+            if (binding.output.text.toString()[0] == '-') {
+                val1 *= -1
+            }
+            val2 = binding.input.text.toString().toDouble()
+            when (ACTION) {
+                ADDITION -> val1 += val2
+                SUBTRACTION -> val1 -= val2
+                MULTIPLICATION -> val1 *= val2
+                DIVISION -> val1 /= val2
+                EXTRA -> val1 *= -1
+                MODULUS -> val1 %= val2
+                EQU -> {}
+            }
+        } else {
+            val1 = binding.input.text.toString().toDouble()
+        }
     }
 
     private fun noOperation() {
