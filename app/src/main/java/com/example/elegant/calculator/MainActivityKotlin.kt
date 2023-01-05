@@ -3,6 +3,7 @@ package com.example.elegant.calculator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.View.OnLongClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.elegant.calculator.databinding.ActivityMainBinding
 
@@ -13,13 +14,14 @@ const val DIVISION = '/'
 const val EQU = '='
 const val EXTRA = '@'
 const val MODULUS = '%'
-const val ACTION = 0.toChar()
+
 
 class MainActivityKotlin : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var val1 = Double.NaN
     private var val2 = 0.0
+    private var ACTION = 0.toChar()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,6 +88,133 @@ class MainActivityKotlin : AppCompatActivity() {
                 exceedLength()
                 input.text = "${input.text}0"
             }
+
+            buttonDot.setOnClickListener {
+                exceedLength()
+                input.text = "${input.text}."
+            }
+
+            buttonPara1.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = MODULUS
+                    operation()
+                    if (!ifReallyDecimal()) {
+                        output.text = "$val1%"
+                    } else {
+                        output.text = val1.toInt().toString() + "%"
+                    }
+                    input.text = null
+                } else {
+                    input.text = "Error"
+                }
+            }
+
+            buttonAdd.setOnClickListener{
+                if (input.text.isNotEmpty()) {
+                    ACTION = ADDITION
+                    operation()
+                    if (!ifReallyDecimal()) {
+                        output.text = "$val1+"
+                    } else {
+                        output.text = val1.toInt().toString() + "+"
+                    }
+                    input.text = null
+                } else {
+                    input.text = "Error"
+                }
+            }
+
+            buttonSub.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = SUBTRACTION
+                    operation()
+                    if (input.text.isNotEmpty()) if (!ifReallyDecimal()) {
+                        output.text = "$val1-"
+                    } else {
+                        output.text = val1.toInt().toString() + "-"
+                    }
+                    input.text = null
+                } else {
+                    output.text = "Error"
+                }
+            }
+
+            buttonMulti.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = MULTIPLICATION
+                    operation()
+                    if (!ifReallyDecimal()) {
+                        output.text = "$val1×"
+                    } else {
+                        output.text = val1.toInt().toString() + "×"
+                    }
+                    input.text = null
+                } else {
+                    output.text = "Error"
+                }
+            }
+
+            buttonDivide.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    ACTION = DIVISION
+                    operation()
+                    if (ifReallyDecimal()) {
+                        output.text = val1.toInt().toString() + "/"
+                    } else {
+                        output.text = "$val1/"
+                    }
+                    input.text = null
+                } else {
+                    output.text = "Error"
+                }
+            }
+
+            buttonPara2.setOnClickListener {
+                if (output.text.toString().isNotEmpty() || input.text.toString().isNotEmpty()) {
+                    val1 = input.text.toString().toDouble()
+                    ACTION = EXTRA
+                    output.text = "-" + input.text.toString()
+                    input.text = ""
+                } else {
+                    output.text = "Error"
+                }
+            }
+
+            buttonEqual.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    operation()
+                    ACTION = EQU
+                    if (!ifReallyDecimal()) {
+                        output.text = val1.toString()
+                    } else {
+                        output.text = val1.toInt().toString()
+                    }
+                    input.text = null
+                } else {
+                    output.text = "Error"
+                }
+            }
+
+            buttonClear.setOnClickListener {
+                if (input.text.isNotEmpty()) {
+                    val name: CharSequence = input.text.toString()
+                    input.text = name.subSequence(0, name.length - 1)
+                } else {
+                    val1 = Double.NaN
+                    val2 = Double.NaN
+                    input.text = ""
+                    output.text = ""
+                }
+            }
+
+            // Empty text views on long click.
+            buttonClear.setOnLongClickListener(OnLongClickListener {
+                val1 = Double.NaN
+                val2 = Double.NaN
+                input.text = ""
+                output.text = ""
+                true
+            })
 
         }
     }
