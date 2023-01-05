@@ -1,5 +1,6 @@
 package com.example.elegant.calculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +21,73 @@ class MainActivityKotlin : AppCompatActivity() {
     private var val1 = Double.NaN
     private var val2 = 0.0
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
+        with(binding){
+            button1.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}1"
+            }
+
+            button2.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}2"
+            }
+
+            button3.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}3"
+            }
+
+            button4.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}4"
+            }
+
+            button5.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}5"
+            }
+
+            button6.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}6"
+            }
+
+            button7.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}7"
+            }
+
+            button8.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}8"
+            }
+
+            button9.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}9"
+            }
+
+            button0.setOnClickListener {
+                ifErrorOnOutput()
+                exceedLength()
+                input.text = "${input.text}0"
+            }
+
+        }
     }
 
     // Remove error message that is already written there.
